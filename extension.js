@@ -13,7 +13,7 @@ function activate(context) {
 
             let workspace = vscode.workspace;
             let path = workspace.rootPath ? workspace.asRelativePath(editor.document.uri) : editor.document.fileName;
-            let fromPath = 'from ' + path.replace('/','.').slice(0,-3) + ' import ';
+            let fromPath = 'from ' + path.replace(/\//g,'.').slice(0,-3) + ' import ';
             if (selectedText.length > 0) {
                 fromPath += selectedText;
             }
