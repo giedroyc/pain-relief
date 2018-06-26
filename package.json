@@ -2,7 +2,7 @@
     "name": "pain-relief",
     "displayName": "pain_relief",
     "description": "",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "publisher": "RG",
     "engines": {
         "vscode": "^1.24.0"
