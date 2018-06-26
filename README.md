@@ -1,4 +1,4 @@
-# pain-relief README
+# pain-relief
 
 ## Features
 
