@@ -3,7 +3,7 @@
     "displayName": "pain_relief",
     "description": "",
     "version": "1.0.0",
-    "publisher": "RG",
+    "publisher": "rgiedroyc",
     "engines": {
         "vscode": "^1.24.0"
     },
