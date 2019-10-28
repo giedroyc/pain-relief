@@ -1,11 +1,10 @@
 const vscode = require('vscode');
-const cp = require('copy-paste');
 
 function activate(context) {
 
     console.log('Congratulations, your extension "pain-relief" is now active!');
 
-    let copyAsFrom = vscode.commands.registerCommand('extension.copyAsFrom', function () {
+    let copyAsFrom = vscode.commands.registerCommand('extension.copyAsFrom', async () => {
         let editor = vscode.window.activeTextEditor;
         if (editor) {
             let selection = editor.selection;
@@ -17,7 +16,7 @@ function activate(context) {
             if (selectedText.length > 0) {
                 fromPath += selectedText;
             }
-            cp.copy(fromPath);
+            await vscode.env.clipboard.writeText(fromPath);
         } else {
             vscode.window.showInformationMessage("Open a file first to copy its path");
         }
