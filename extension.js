@@ -28,8 +28,9 @@ function activate(context) {
             let lineNumber = editor.selection.active.line;
 
             let workspace = vscode.workspace;
-            let path = workspace.rootPath ? workspace.asAbsolutePath(editor.document.uri) : editor.document.fileName;
-            let breakpointPath = 'b ' + path.replace(/\//g,'.').slice(0,-3) + ':' + lineNumber;            
+            let path = workspace.rootPath ? workspace.asRelativePath(editor.document.uri) : editor.document.fileName;
+            let absolutePath = context.asAbsolutePath(path)
+            let breakpointPath = 'b ' + absolutePath.slice(0,-3) + ':' + lineNumber;            
             await vscode.env.clipboard.writeText(breakpointPath);
         } else {
             vscode.window.showInformationMessage("Open a file first to copy its path");
