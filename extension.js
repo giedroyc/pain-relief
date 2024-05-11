@@ -22,7 +22,21 @@ function activate(context) {
         }
     });
 
-    context.subscriptions.push([copyAsFrom]);
+    let copyPyBreakpoint = vscode.commands.registerCommand('extension.copyPyBreakpoint', async () => {
+        let editor = vscode.window.activeTextEditor;
+        if (editor) {
+            let lineNumber = editor.selection.active.line;
+
+            let workspace = vscode.workspace;
+            let path = workspace.rootPath ? workspace.asAbsolutePath(editor.document.uri) : editor.document.fileName;
+            let breakpointPath = 'b ' + path.replace(/\//g,'.').slice(0,-3) + ':' + lineNumber;            
+            await vscode.env.clipboard.writeText(breakpointPath);
+        } else {
+            vscode.window.showInformationMessage("Open a file first to copy its path");
+        }
+    });
+
+    context.subscriptions.push([copyAsFrom, copyPyBreakpoint]);
 }
 exports.activate = activate;
 
