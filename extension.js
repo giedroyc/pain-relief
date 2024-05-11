@@ -25,12 +25,9 @@ function activate(context) {
     let copyPyBreakpoint = vscode.commands.registerCommand('extension.copyPyBreakpoint', async () => {
         let editor = vscode.window.activeTextEditor;
         if (editor) {
-            let lineNumber = editor.selection.active.line;
-
-            let workspace = vscode.workspace;
-            let path = workspace.rootPath ? workspace.asRelativePath(editor.document.uri) : editor.document.fileName;
-            let absolutePath = context.asAbsolutePath(path)
-            let breakpointPath = 'b ' + absolutePath.slice(0,-3) + ':' + lineNumber;            
+            let lineNumber = editor.selection.active.line + 1;
+            let path = editor.document.uri.path
+            let breakpointPath = 'b ' + path.slice(0,-3) + ':' + lineNumber;            
             await vscode.env.clipboard.writeText(breakpointPath);
         } else {
             vscode.window.showInformationMessage("Open a file first to copy its path");
