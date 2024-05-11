@@ -26,7 +26,7 @@ function activate(context) {
         let editor = vscode.window.activeTextEditor;
         if (editor) {
             let lineNumber = editor.selection.active.line + 1;
-            let path = editor.document.uri.path
+            let path = editor.document.uri.path;
             let breakpointPath = 'b ' + path.slice(0,-3) + ':' + lineNumber;            
             await vscode.env.clipboard.writeText(breakpointPath);
         } else {
