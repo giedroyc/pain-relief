@@ -19,15 +19,27 @@
         {
             "command": "extension.copyAsFrom",
             "title": "Copy repl path"
+        },
+        {
+            "command": "extension.copyPyBreakpoint",
+            "title": "Copy py breakpoint"
         }],
         "keybindings": [{
             "command": "extension.copyAsFrom",
             "key": "ctrl+alt+c",
             "mac": "cmd+alt+c"
+        }, {
+            "command": "extension.copyPyBreakpoint",
+            "key": "ctrl+alt+b",
+            "mac": "cmd+alt+b"            
         }],
         "menus": {
             "editor/context": [{
                 "command": "extension.copyAsFrom",
+                "group" : "pr@1"
+            },
+            {
+            "command": "extension.copyPyBreakpoint",
                 "group" : "pr@1"
             }]
         }
