@@ -11,7 +11,8 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.copyAsFrom"
+        "onCommand:extension.copyAsFrom",
+        "onCommand:extension.copyPyBreakpoint"
     ],
     "main": "./extension",
     "contributes": {
@@ -39,7 +40,7 @@
                 "group" : "pr@1"
             },
             {
-            "command": "extension.copyPyBreakpoint",
+                "command": "extension.copyPyBreakpoint",
                 "group" : "pr@1"
             }]
         }
